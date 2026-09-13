@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Kumar - General Worker Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #e8eef2;
+            color: #17212b;
+            font-family: Arial, sans-serif;
+            line-height: 1.45;
+            padding: 5rem 1rem 2rem;
+        }
+
+        .actions {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 5;
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.45rem;
+            background: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 6px 18px rgba(23, 33, 43, 0.15);
+        }
+
+        .actions button {
+            border: 0;
+            border-radius: 0.35rem;
+            padding: 0.6rem 0.8rem;
+            background: #173b4d;
+            color: #ffffff;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.78rem;
+        }
+
+        .actions button:hover {
+            background: #2563eb;
+        }
+
+        .resume {
+            width: min(100%, 900px);
+            min-height: 297mm;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 18px 45px rgba(23, 33, 43, 0.16);
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 2rem 2.4rem;
+            background: #173b4d;
+            color: #ffffff;
+            border-bottom: 7px solid #2563eb;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            letter-spacing: 0.02em;
+        }
+
+        .role {
+            color: #bfdbfe;
+            font-size: 1.05rem;
+            margin-top: 0.3rem;
+        }
+
+        .contact {
+            display: grid;
+            gap: 0.35rem;
+            font-size: 0.76rem;
+            text-align: right;
+        }
+
+        .contact i {
+            width: 1rem;
+            color: #93c5fd;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 1.7rem;
+            padding: 1.6rem 2.4rem;
+        }
+
+        .section {
+            margin-bottom: 1.25rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            border-bottom: 2px solid #dce5e9;
+            color: #173b4d;
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.65rem;
+            padding-bottom: 0.35rem;
+            text-transform: uppercase;
+        }
+
+        p,
+        li {
+            color: #394953;
+
+            body {
+                padding: 4.5rem 0.5rem 1rem;
+            }
+
+            font-size: 0.82rem;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 0.35rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        li::before {
+            color: #2563eb;
+            content: "-";
+            font-weight: bold;
+            left: 0;
+            position: absolute;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            background: #edf3f5;
+            border-left: 3px solid #2563eb;
+            color: #294553;
+            font-size: 0.72rem;
+            padding: 0.3rem 0.55rem;
+        }
+
+        .job {
+            border-left: 3px solid #2563eb;
+            margin-bottom: 1rem;
+            padding-left: 0.8rem;
+        }
+
+        .job:last-child {
+            margin-bottom: 0;
+        }
+
+        .job h3 {
+            color: #173b4d;
+            font-size: 0.95rem;
+        }
+
+        .job .meta {
+            color: #2563eb;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin: 0.15rem 0 0.35rem;
+        }
+
+        .availability {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e3a8a;
+            font-size: 0.78rem;
+            padding: 0.75rem;
+        }
+
+        .footer {
+            border-top: 1px solid #dce5e9;
+            color: #6b7c85;
+            font-size: 0.68rem;
+            padding: 0.7rem 2.4rem;
+            text-align: center;
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+
+            html,
+            body {
+                background: #ffffff;
+                height: 297mm;
+                width: 210mm;
+            }
+
+            body {
+                padding: 0;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .actions {
+                display: none;
+            }
+
+            .resume {
+                box-shadow: none;
+                min-height: 297mm;
+                width: 210mm;
+            }
+
+            .header {
+                padding: 1.4rem 1.8rem;
+            }
+
+        }
+
+        .contact {
+            margin-top: 1rem;
+            text-align: left;
+
+            .content {
+                gap: 1.2rem;
+                padding: 1.2rem 1.8rem;
+            }
+
+            .section {
+                margin-bottom: 0.85rem;
+            }
+
+            .footer {
+                padding: 0.5rem 1.8rem;
+            }
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 4.5rem 0.5rem 1rem;
+            }
+
+            .actions {
+                left: 0.5rem;
+                right: 0.5rem;
+                justify-content: center;
+                top: 0.5rem;
+            }
+
+            .actions button {
+                flex: 1;
+            }
+
+            .header,
+            .content {
+                display: block;
+                padding: 1.25rem;
+            }
+
+            .contact {
+                margin-top: 1rem;
+                text-align: left;
+            }
+
+            /* Match the original resume page theme and layout */
+            body {
+                background: #f8fafc;
+                font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+                line-height: 1.5;
+            }
+        }
+
+        .resume,
+        .cover-letter {
+            max-width: 1150px;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .header {
+            background: linear-gradient(105deg, #0f172a 0%, #1e293b 100%);
+            border-bottom: 0;
+            padding: 2.5rem 2rem;
+        }
+
+        .content>div:first-child {
+            h1 {
+                font-size: 2.9rem;
+            }
+
+            .role {
+                color: #cbd5e1;
+            }
+
+            .contact i {
+                color: #93c5fd;
+            }
+
+            margin-bottom: 1.25rem;
+
+            .content {
+                gap: 2rem;
+                padding: 2.2rem 2.5rem;
+            }
+        }
+
+        .section {
+            background: #ffffff;
+            border: 1px solid #e9eef3;
+            border-radius: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 1.25rem;
+            padding: 1.6rem 1.8rem;
+        }
+
+        h2 {
+            color: #0f172a;
+            font-size: 1.05rem;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .footer {
+            .tag {
+                background: #f1f5f9;
+                border: 1px solid #e2e8f0;
+                border-left: 3px solid #2563eb;
+                border-radius: 20px;
+                color: #1e293b;
+            }
+
+            padding: 0.6rem 1.25rem;
+
+            .availability {
+                background: #eff6ff;
+                border: 1px solid #bfdbfe;
+                border-radius: 1.2rem;
+                color: #1e3a8a;
+            }
+        }
+
+        .footer {
+            background: #f1f5f9;
+        }
+        
+
+        @media print {
+
+            .resume,
+            .cover-letter {
+                border-radius: 0;
+                box-shadow: none;
+                max-width: none;
+                width: 210mm;
+            }
+
+            .header {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .content {
+                gap: 0.8rem;
+                padding: 0.9rem 1rem;
+            }
+
+            .section {
+                border-radius: 0.6rem;
+                margin-bottom: 0.8rem;
+                padding: 0.8rem 0.9rem;
+                box-shadow: none;
+            }
+        }
+
+        .document-view[hidden] {
+            display: none;
+        }
+
+        .view-switcher {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.4rem;
+            z-index: 6;
+            padding: 0.35rem;
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 0.4rem;
+        }
+
+        .view-switcher button {
+            border: 0;
+            border-radius: 0.3rem;
+            padding: 0.55rem 0.9rem;
+            background: #e5e7eb;
+            color: #1f2937;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.78rem;
+        }
+
+        .view-switcher button.active,
+        .view-switcher button:hover {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+        .cover-letter {
+            width: min(100%, 900px);
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 3rem 3.5rem;
+            background: #ffffff;
+            box-shadow: 0 18px 45px rgba(23, 33, 43, 0.16);
+        }
+
+        .cover-letter h1 {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cover-letter h2 {
+            color: #2563eb;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-letter p {
+            color: #374151;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .cover-letter .signature {
+            color: #1f2937;
+            font-weight: bold;
+            margin-top: 1.8rem;
+        }
+
+        /* Basic blue and white palette */
+        body {
+            background: #f3f4f6;
+        }
+
+        .header {
+            background: #1f2937;
+            border-bottom-color: #2563eb;
+        }
+
+        .role {
+            color: #bfdbfe;
+        }
+
+        .contact i {
+            color: #93c5fd;
+        }
+
+        .actions button {
+            background: #1f2937;
+        }
+
+        .actions button:hover {
+            background: #2563eb;
+        }
+
+        h2,
+        .job h3 {
+            color: #1f2937;
+        }
+
+        li::before,
+        .job .meta {
+            color: #2563eb;
+        }
+
+        .tag {
+            border-left-color: #2563eb;
+        }
+
+        .availability {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1e3a8a;
+        }
+
+        @media print {
+            .view-switcher {
+                display: none;
+            }
+
+            .cover-letter {
+                box-shadow: none;
+                min-height: 297mm;
+                width: 210mm;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .view-switcher {
+                top: 3.8rem;
+            }
+
+            .cover-letter {
+                padding: 1.5rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="view-switcher" aria-label="Document switcher">
+        <button id="resume-view-button" class="active" type="button"><i class="fas fa-file-alt"></i> Resume</button>
+        <button id="cover-letter-view-button" type="button"><i class="fas fa-envelope"></i> Cover Letter</button>
+    </nav>
+
+    <div class="actions" aria-label="Resume actions">
+        <button id="print-resume" type="button"><i class="fas fa-file-pdf"></i> PDF / Print</button>
+        <button id="image-resume" type="button"><i class="fas fa-image"></i> Image</button>
+    </div>
+
+    <main class="resume document-view" id="resume">
+        <header class="header">
+            <div>
+                <h1>Amit Kumar</h1>
+                <div class="role">General Worker | Warehouse | Hospitality | Agriculture</div>
+            </div>
+            <div class="contact">
+                <span><i class="fas fa-phone"></i> +91 628-029-9226</span>
+                <span><i class="fas fa-envelope"></i> amitkumarparjapat1432@gmail.com</span>
+                <span><i class="fas fa-map-marker-alt"></i> India | Open to relocation</span>
+            </div>
+        </header>
+
+        <div class="content">
+            <div>
+                <section class="section">
+                    <h2>Career Profile</h2>
+                    <p>Hardworking, reliable, and physically fit worker seeking opportunities in warehouse operations,
+                        supermarkets, restaurants, farms, hospitality, factories, and agriculture. Quick to learn,
+                        respectful, punctual, and comfortable working independently or as part of a team.</p>
+                </section>
+
+                <section class="section">
+                    <h2>Key Skills</h2>
+                    <div class="tags">
+                        <span class="tag">Loading and unloading</span>
+                        <span class="tag">Packing and sorting</span>
+                        <span class="tag">Cleaning and hygiene</span>
+                        <span class="tag">Stock handling</span>
+                        <span class="tag">Customer service</span>
+                        <span class="tag">Kitchen assistance</span>
+                        <span class="tag">Farm and animal care</span>
+                        <span class="tag">Teamwork</span>
+                        <span class="tag">Time management</span>
+                        <span class="tag">Safety awareness</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Work Preferences</h2>
+                    <div class="availability">Open to full-time, seasonal, shift, weekend, and entry-level work. Willing
+                        to relocate internationally and follow workplace rules, safety procedures, and local
+                        requirements.</div>
+                </section>
+
+                <section class="section">
+                    <h2>Languages</h2>
+                    <p>English, Hindi, Punjabi</p>
+                </section>
+            </div>
+
+            <div>
+                <section class="section">
+                    <h2>Suitable Job Areas</h2>
+                    <ul>
+                        <li>Warehouse and logistics assistant</li>
+                        <li>Supermarket shelf and stock assistant</li>
+                        <li>Restaurant kitchen or service assistant</li>
+                        <li>Dairy farm and animal farm worker</li>
+                        <li>Hotel and hospitality assistant</li>
+                        <li>Factory and production helper</li>
+                        <li>Agriculture and seasonal farm worker</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>Relevant Experience</h2>
+                    <div class="job">
+                        <h3>Web Designer and Team Assistant</h3>
+                        <div class="meta">Professional experience | India</div>
+                        <ul>
+                            <li>Completed tasks accurately while meeting deadlines.</li>
+                            <li>Worked with clients and team members in a professional environment.</li>
+                            <li>Maintained organized files, tools, and daily work responsibilities.</li>
+                        </ul>
+                    </div>
+                    <div class="job">
+                        <h3>Transferable Work Strengths</h3>
+                        <div class="meta">Ready for entry-level and practical roles</div>
+                        <ul>
+                            <li>Fast learner with a positive attitude toward new duties.</li>
+                            <li>Prepared to work standing, lifting, cleaning, packing, and rotating shifts.</li>
+                            <li>Respectful, dependable, and focused on safe work.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Preferred Countries</h2>
+                    <div class="tags">
+                        <span class="tag">All European countries</span>
+                        <span class="tag">Singapore</span>
+                        <span class="tag">Australia</span>
+                        <span class="tag">Poland</span>
+                        <span class="tag">Denmark</span>
+                        <span class="tag">Germany</span>
+                        <span class="tag">Latvia</span>
+                        <span class="tag">Cyprus</span>
+                        <span class="tag">Japan</span>
+                        <span class="tag">South Korea</span>
+                        <span class="tag">Vietnam</span>
+                        <span class="tag">Spain</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <footer class="footer">References available upon request | Amit Kumar</footer>
+    </main>
+
+    <article class="cover-letter document-view" id="cover-letter" hidden>
+        <h1>Amit Kumar</h1>
+        <h2>Application for General Worker Position</h2>
+        <p>Dear Hiring Manager,</p>
+        <p>I am writing to apply for a suitable general worker position with your organization. I am hardworking,
+            reliable, physically fit, and ready to learn new duties quickly. I am interested in warehouse, supermarket,
+            restaurant, dairy farm, animal farm, hospitality, factory, and agriculture work.</p>
+        <p>I can support daily operations through packing, sorting, loading and unloading, cleaning, stock handling,
+            kitchen assistance, customer service, farm work, and other practical duties. I work respectfully with
+            supervisors and colleagues, follow instructions carefully, and take workplace safety seriously.</p>
+        <p>I am available for full-time, seasonal, shift, weekend, and entry-level work. I am also willing to relocate
+            to European countries, Singapore, Australia, Poland, Denmark, Germany, Latvia, Cyprus, Japan, South Korea,
+            Vietnam, Spain, and other suitable destinations.</p>
+        <p>Thank you for considering my application. I would appreciate the opportunity to discuss how I can contribute
+            to your team.</p>
+        <p class="signature">Sincerely,<br>Amit Kumar<br>+91 628-029-9226<br>amitkumarparjapat1432@gmail.com</p>
+    </article>
+
+    <script>
+        const resume = document.getElementById('resume');
+        const coverLetter = document.getElementById('cover-letter');
+        const resumeButton = document.getElementById('resume-view-button');
+        const coverLetterButton = document.getElementById('cover-letter-view-button');
+
+        function showDocument(documentView, activeButton) {
+            resume.hidden = documentView !== resume;
+            coverLetter.hidden = documentView !== coverLetter;
+            resumeButton.classList.toggle('active', activeButton === resumeButton);
+            coverLetterButton.classList.toggle('active', activeButton === coverLetterButton);
+        }
+
+        resumeButton.addEventListener('click', () => showDocument(resume, resumeButton));
+        coverLetterButton.addEventListener('click', () => showDocument(coverLetter, coverLetterButton));
+        document.getElementById('print-resume').addEventListener('click', () => window.print());
+
+        document.getElementById('image-resume').addEventListener('click', () => {
+            const button = document.getElementById('image-resume');
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating...';
+
+            html2canvas(document.querySelector('.document-view:not([hidden])'), { scale: 2, backgroundColor: '#ffffff' })
+                .then((canvas) => {
+                    const link = document.createElement('a');
+                    link.download = 'amit-kumar-general-worker-resume.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                })
+                .catch(() => window.alert('Unable to create the image. Please try again.'))
+                .finally(() => {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                });
+        });
+    </script>
+</body>
+
+</html>
