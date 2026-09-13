@@ -20,7 +20,7 @@
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       color: #0f172a;
       line-height: 1.5;
-      padding: 2rem 1rem;
+      padding: 5rem 1rem 2rem;
     }
 
     .portfolio {
@@ -65,6 +65,88 @@
     .export-actions button:hover {
       background: #2563eb;
       transform: translateY(-1px);
+    }
+
+    .document-switcher {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      transform: translateX(-50%);
+      z-index: 10;
+      padding: 0.45rem;
+      border-radius: 0.65rem;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
+    }
+
+    .document-switcher button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-width: 9rem;
+      border: 0;
+      border-radius: 0.5rem;
+      padding: 0.65rem 0.8rem;
+      background: #e2e8f0;
+      color: #1e293b;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.8rem;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .document-switcher button.active,
+    .document-switcher button:hover {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .cover-letter {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 4rem 4.5rem;
+      background: #ffffff;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+    }
+
+    .cover-letter-header {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .cover-letter h1 {
+      color: #0f172a;
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .cover-letter h2 {
+      color: #2563eb;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .cover-letter p {
+      color: #334155;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .cover-letter .signature {
+      margin-top: 2rem;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .document-view[hidden] {
+      display: none;
     }
 
     /* hero section with image */
@@ -487,6 +569,10 @@
         display: none;
       }
 
+      .document-switcher {
+        display: none;
+      }
+
       .hero {
         padding: 1.2rem 1.5rem;
       }
@@ -593,9 +679,31 @@
       .footer-note {
         padding: 0.5rem;
       }
+
+      .cover-letter {
+        width: 210mm;
+        max-width: none;
+        min-height: 297mm;
+        padding: 2.5rem 2.8rem;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .cover-letter h1 {
+        font-size: 1.8rem;
+      }
+
+      .cover-letter p {
+        font-size: 0.85rem;
+        line-height: 1.55;
+      }
     }
 
     @media (max-width: 600px) {
+      body {
+        padding: 4.5rem 0.5rem 2rem;
+      }
+
       .export-actions {
         top: 0.5rem;
         right: 0.5rem;
@@ -607,11 +715,42 @@
         padding: 0.45rem 0.55rem;
         font-size: 0.7rem;
       }
+
+      .document-switcher {
+        top: 0.5rem;
+        right: auto;
+        bottom: auto;
+        left: 50%;
+        flex-direction: row;
+        transform: translateX(-50%);
+      }
+
+      .document-switcher button {
+        min-width: 0;
+        flex: 1;
+        justify-content: center;
+        padding: 0.5rem;
+        font-size: 0.7rem;
+      }
+
+      .cover-letter {
+        padding: 2rem 1.25rem;
+        border-radius: 1.2rem;
+      }
     }
   </style>
 </head>
 
 <body>
+  <nav class="document-switcher" aria-label="Document switcher">
+    <button id="resume-view-button" class="active" type="button">
+      <i class="fas fa-file-alt"></i> Resume
+    </button>
+    <button id="cover-letter-view-button" type="button">
+      <i class="fas fa-envelope-open-text"></i> Cover Letter
+    </button>
+  </nav>
+
   <div class="export-actions" aria-label="Resume export actions">
     <button id="print-resume" type="button" title="Print or save as PDF">
       <i class="fas fa-file-pdf"></i> PDF / Print
@@ -621,227 +760,275 @@
     </button>
   </div>
 
-  <div class="portfolio">
-    <!-- Hero / Banner with profile image -->
-    <header class="hero">
-      <!-- Profile image - replace src with your actual image URL -->
-      <div class="profile-image-wrapper">
-        <!-- 
+  <div id="resume-view" class="document-view">
+    <div class="portfolio export-target">
+      <!-- Hero / Banner with profile image -->
+      <header class="hero">
+        <!-- Profile image - replace src with your actual image URL -->
+        <div class="profile-image-wrapper">
+          <!-- 
           IMPORTANT: Replace the src below with your own photo URL.
           Options: 
           - Local file: src="./your-photo.jpg"
           - Online URL: src="https://example.com/your-photo.jpg"
           - For now, using a placeholder image from Unsplash
         -->
-        <img src="user-1.jpeg" alt="Amit Kumar profile photo"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <!-- Fallback initials if image fails to load -->
-        <div class="fallback-avatar" style="display: none;">AK</div>
-      </div>
-
-      <h1>Amit Kumar</h1>
-      <div class="title">Web Designer & Frontend Specialist</div>
-      <div class="contact-strip">
-        <span><i class="fas fa-phone-alt"></i> +91 628-029-9226</span>
-        <span><i class="fas fa-envelope"></i> amitkumarparjapat1432@gmail.com</span>
-        <span><i class="fas fa-map-marker-alt"></i> India</span>
-        <a href="https://www.linkedin.com/in/amit-kumar-b8722422a/" target="_blank"><i class="fab fa-linkedin"></i>
-          LinkedIn</a>
-      </div>
-    </header>
-
-    <!-- Main content grid -->
-    <div class="main-grid">
-      <!-- LEFT COLUMN -->
-      <div>
-        <!-- Professional Summary -->
-        <div class="card">
-          <div class="section-title">
-            <i class="fas fa-user-circle"></i> Profile
-          </div>
-          <p class="summary-text">
-            Motivated and detail-oriented Web Designer with over 2 years of professional experience in designing and
-            developing responsive, user-friendly websites.
-            BCA graduate with a strong foundation in UI development and maintenance. Worked with multiple companies to
-            deliver clean, modern interfaces.
-          </p>
-          <div class="badge-group">
-            <span class="badge">2+ years experience</span>
-            <span class="badge">4 companies</span>
-            <span class="badge">International mindset</span>
-          </div>
+          <img src="user-1.jpeg" alt="Amit Kumar profile photo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <!-- Fallback initials if image fails to load -->
+          <div class="fallback-avatar" style="display: none;">AK</div>
         </div>
 
-        <!-- Education -->
-        <div class="card">
-          <div class="section-title">
-            <i class="fas fa-graduation-cap"></i> Education
-          </div>
-          <div class="edu-block">
-            <h3>Bachelor of Computer Applications (BCA)</h3>
-            <div class="meta">
-              <i class="fas fa-university"></i> Chandigarh University
-            </div>
-            <div class="meta">
-              <i class="far fa-calendar-alt"></i> Year of Graduation: 2026
-            </div>
-          </div>
+        <h1>Amit Kumar</h1>
+        <div class="title">Web Designer & Frontend Specialist</div>
+        <div class="contact-strip">
+          <span><i class="fas fa-phone-alt"></i> +91 628-029-9226</span>
+          <span><i class="fas fa-envelope"></i> amitkumarparjapat1432@gmail.com</span>
+          <span><i class="fas fa-map-marker-alt"></i> India</span>
+          <a href="https://www.linkedin.com/in/amit-kumar-b8722422a/" target="_blank"><i class="fab fa-linkedin"></i>
+            LinkedIn</a>
         </div>
+      </header>
 
-        <!-- Technical Skills -->
-        <div class="card">
-          <div class="section-title">
-            <i class="fas fa-code"></i> Technical Skills
+      <!-- Main content grid -->
+      <div class="main-grid">
+        <!-- LEFT COLUMN -->
+        <div>
+          <!-- Professional Summary -->
+          <div class="card">
+            <div class="section-title">
+              <i class="fas fa-user-circle"></i> Profile
+            </div>
+            <p class="summary-text">
+              Motivated and detail-oriented Web Designer with over 2 years of professional experience in designing and
+              developing responsive, user-friendly websites.
+              BCA graduate with a strong foundation in UI development and maintenance. Worked with multiple companies to
+              deliver clean, modern interfaces.
+            </p>
+            <div class="badge-group">
+              <span class="badge">2+ years experience</span>
+              <span class="badge">4 companies</span>
+              <span class="badge">International mindset</span>
+            </div>
           </div>
-          <div class="skills-container">
-            <div class="skill-category">
-              <h5>Core</h5>
-              <div class="skill-tags">
-                <span class="skill-tag">HTML5</span>
-                <span class="skill-tag">CSS3</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Responsive Design</span>
-              </div>
+
+          <!-- Education -->
+          <div class="card">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i> Education
             </div>
-            <div class="skill-category">
-              <h5>Frameworks & CMS</h5>
-              <div class="skill-tags">
-                <span class="skill-tag">Bootstrap</span>
-                <span class="skill-tag">WordPress</span>
-                <span class="skill-tag">Webflow</span>
-                <span class="skill-tag">Shopify</span>
-                <span class="skill-tag">Wix</span>
+            <div class="edu-block">
+              <h3>Bachelor of Computer Applications (BCA)</h3>
+              <div class="meta">
+                <i class="fas fa-university"></i> Chandigarh University
               </div>
-            </div>
-            <div class="skill-category">
-              <h5>Tools & Platforms</h5>
-              <div class="skill-tags">
-                <span class="skill-tag">Figma</span>
-                <span class="skill-tag">Canva</span>
-                <span class="skill-tag">Framer</span>
-                <span class="skill-tag">Unbounce</span>
-                <span class="skill-tag">HubSpot</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Basic SEO</span>
+              <div class="meta">
+                <i class="far fa-calendar-alt"></i> Year of Graduation: 2026
               </div>
             </div>
           </div>
+
+          <!-- Technical Skills -->
+          <div class="card">
+            <div class="section-title">
+              <i class="fas fa-code"></i> Technical Skills
+            </div>
+            <div class="skills-container">
+              <div class="skill-category">
+                <h5>Core</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">HTML5</span>
+                  <span class="skill-tag">CSS3</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">Responsive Design</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h5>Frameworks & CMS</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">Bootstrap</span>
+                  <span class="skill-tag">WordPress</span>
+                  <span class="skill-tag">Webflow</span>
+                  <span class="skill-tag">Shopify</span>
+                  <span class="skill-tag">Wix</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h5>Tools & Platforms</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">Figma</span>
+                  <span class="skill-tag">Canva</span>
+                  <span class="skill-tag">Framer</span>
+                  <span class="skill-tag">Unbounce</span>
+                  <span class="skill-tag">HubSpot</span>
+                  <span class="skill-tag">Git</span>
+                  <span class="skill-tag">Basic SEO</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills + Hobbies & Languages -->
+          <div class="card">
+            <div class="section-title">
+              <i class="fas fa-heart"></i> Soft Skills & Interests
+            </div>
+            <div class="soft-list">
+              <span class="soft-item"><i class="fas fa-users"></i> Teamwork</span>
+              <span class="soft-item"><i class="fas fa-comment"></i> Communication</span>
+              <span class="soft-item"><i class="fas fa-lightbulb"></i> Problem Solving</span>
+              <span class="soft-item"><i class="fas fa-clock"></i> Time Management</span>
+              <span class="soft-item"><i class="fas fa-sync-alt"></i> Adaptability</span>
+            </div>
+            <hr>
+            <div class="hobbies-lang">
+              <div class="hobby-item">
+                <i class="fas fa-book-open"></i> Reading books
+              </div>
+              <div class="hobby-item">
+                <i class="fas fa-music"></i> Playing music
+              </div>
+              <div class="lang-item">
+                <i class="fas fa-globe"></i> English · Hindi · Punjabi
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Soft Skills + Hobbies & Languages -->
-        <div class="card">
-          <div class="section-title">
-            <i class="fas fa-heart"></i> Soft Skills & Interests
+        <!-- RIGHT COLUMN -->
+        <div>
+          <!-- Work Experience -->
+          <div class="card">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i> Work Experience
+            </div>
+
+            <div class="job">
+              <div class="job-header">
+                <h4>Junior Web Designer</h4>
+                <span class="duration">May 2026 – Present (Jul 2026)</span>
+              </div>
+              <div class="company">Dilighttech</div>
+              <ul>
+                <li><i class="fas fa-circle"></i> Designed and customized websites according to client requirements.
+                </li>
+                <li><i class="fas fa-circle"></i> Worked with design tools and front-end technologies.</li>
+                <li><i class="fas fa-circle"></i> Ensured cross-browser compatibility and responsive design.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-header">
+                <h4>Junior Web Designer</h4>
+                <span class="duration">Nov 2024 – Jul 2025</span>
+              </div>
+              <div class="company">Webspin technologies</div>
+              <ul>
+                <li><i class="fas fa-circle"></i> Designed and customized websites according to client requirements.
+                </li>
+                <li><i class="fas fa-circle"></i> Worked with design tools and front-end technologies.</li>
+                <li><i class="fas fa-circle"></i> Ensured cross-browser compatibility and responsive design.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-header">
+                <h4>Intern + Junior Web Designer</h4>
+                <span class="duration">Feb 2023 – Nov 2024</span>
+              </div>
+              <div class="company">Ditinus Technology</div>
+              <ul>
+                <li><i class="fas fa-circle"></i> Developed modern website interfaces with focus on UX.</li>
+                <li><i class="fas fa-circle"></i> Improved website performance and mobile responsiveness.</li>
+                <li><i class="fas fa-circle"></i> Assisted in website updates and bug fixes.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-header">
+                <h4>Training: Web Designer</h4>
+                <span class="duration">Jan 2022 – Jul 2022</span>
+              </div>
+              <div class="company">Visiontrek Communication</div>
+              <ul>
+                <li><i class="fas fa-circle"></i> Designed and maintained responsive websites.</li>
+                <li><i class="fas fa-circle"></i> Created user-friendly layouts using HTML, CSS, and JavaScript.</li>
+                <li><i class="fas fa-circle"></i> Collaborated with developers and clients to deliver quality web
+                  solutions.</li>
+              </ul>
+            </div>
           </div>
-          <div class="soft-list">
-            <span class="soft-item"><i class="fas fa-users"></i> Teamwork</span>
-            <span class="soft-item"><i class="fas fa-comment"></i> Communication</span>
-            <span class="soft-item"><i class="fas fa-lightbulb"></i> Problem Solving</span>
-            <span class="soft-item"><i class="fas fa-clock"></i> Time Management</span>
-            <span class="soft-item"><i class="fas fa-sync-alt"></i> Adaptability</span>
+
+          <!-- Career Objective -->
+          <div class="card">
+            <div class="section-title">
+              <i class="fas fa-bullseye"></i> Career Objective
+            </div>
+            <div class="objective">
+              "To obtain a Web Designer position in a reputable international organization where I can apply my
+              technical
+              skills, gain global experience, and contribute to innovative web development projects."
+            </div>
           </div>
-          <hr>
-          <div class="hobbies-lang">
-            <div class="hobby-item">
-              <i class="fas fa-book-open"></i> Reading books
-            </div>
-            <div class="hobby-item">
-              <i class="fas fa-music"></i> Playing music
-            </div>
-            <div class="lang-item">
-              <i class="fas fa-globe"></i> English · Hindi · Punjabi
-            </div>
+
+          <!-- Small portfolio note -->
+          <div
+            style="margin-top: 0.8rem; display: flex; align-items: center; gap: 0.5rem; color: #475569; font-size: 0.9rem; padding-left: 0.3rem;">
+            <i class="fas fa-external-link-alt"></i> Portfolio available upon request · Open to global opportunities
           </div>
         </div>
       </div>
 
-      <!-- RIGHT COLUMN -->
-      <div>
-        <!-- Work Experience -->
-        <div class="card">
-          <div class="section-title">
-            <i class="fas fa-briefcase"></i> Work Experience
-          </div>
-
-          <div class="job">
-            <div class="job-header">
-              <h4>Junior Web Designer</h4>
-              <span class="duration">May 2026 – Present (Jul 2026)</span>
-            </div>
-            <div class="company">Dilighttech</div>
-            <ul>
-              <li><i class="fas fa-circle"></i> Designed and customized websites according to client requirements.</li>
-              <li><i class="fas fa-circle"></i> Worked with design tools and front-end technologies.</li>
-              <li><i class="fas fa-circle"></i> Ensured cross-browser compatibility and responsive design.</li>
-            </ul>
-          </div>
-
-          <div class="job">
-            <div class="job-header">
-              <h4>Junior Web Designer</h4>
-              <span class="duration">Nov 2024 – Jul 2025</span>
-            </div>
-            <div class="company">Webspin technologies</div>
-            <ul>
-              <li><i class="fas fa-circle"></i> Designed and customized websites according to client requirements.</li>
-              <li><i class="fas fa-circle"></i> Worked with design tools and front-end technologies.</li>
-              <li><i class="fas fa-circle"></i> Ensured cross-browser compatibility and responsive design.</li>
-            </ul>
-          </div>
-
-          <div class="job">
-            <div class="job-header">
-              <h4>Intern + Junior Web Designer</h4>
-              <span class="duration">Feb 2023 – Nov 2024</span>
-            </div>
-            <div class="company">Ditinus Technology</div>
-            <ul>
-              <li><i class="fas fa-circle"></i> Developed modern website interfaces with focus on UX.</li>
-              <li><i class="fas fa-circle"></i> Improved website performance and mobile responsiveness.</li>
-              <li><i class="fas fa-circle"></i> Assisted in website updates and bug fixes.</li>
-            </ul>
-          </div>
-
-          <div class="job">
-            <div class="job-header">
-              <h4>Training: Web Designer</h4>
-              <span class="duration">Jan 2022 – Jul 2022</span>
-            </div>
-            <div class="company">Visiontrek Communication</div>
-            <ul>
-              <li><i class="fas fa-circle"></i> Designed and maintained responsive websites.</li>
-              <li><i class="fas fa-circle"></i> Created user-friendly layouts using HTML, CSS, and JavaScript.</li>
-              <li><i class="fas fa-circle"></i> Collaborated with developers and clients to deliver quality web
-                solutions.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Career Objective -->
-        <div class="card">
-          <div class="section-title">
-            <i class="fas fa-bullseye"></i> Career Objective
-          </div>
-          <div class="objective">
-            "To obtain a Web Designer position in a reputable international organization where I can apply my technical
-            skills, gain global experience, and contribute to innovative web development projects."
-          </div>
-        </div>
-
-        <!-- Small portfolio note -->
-        <div
-          style="margin-top: 0.8rem; display: flex; align-items: center; gap: 0.5rem; color: #475569; font-size: 0.9rem; padding-left: 0.3rem;">
-          <i class="fas fa-external-link-alt"></i> Portfolio available upon request · Open to global opportunities
-        </div>
+      <div class="footer-note">
+        © 2026 Amit Kumar · Web Designer · India · amitkumarparjapat1432@gmail.com
       </div>
     </div>
 
-    <div class="footer-note">
-      © 2026 Amit Kumar · Web Designer · India · amitkumarparjapat1432@gmail.com
-    </div>
   </div>
 
+  <article id="cover-letter-view" class="document-view cover-letter export-target" hidden>
+    <header class="cover-letter-header">
+      <h1>Amit Kumar</h1>
+      <h2>Web Designer & Frontend Specialist</h2>
+      <p>+91 628-029-9226 | amitkumarparjapat1432@gmail.com | India</p>
+    </header>
+
+    <p>Dear Hiring Manager,</p>
+    <p>
+      I am writing to express my interest in the Web Designer position at your organization. With over two years of
+      experience creating responsive, user-friendly websites, I have developed a strong foundation in HTML, CSS,
+      JavaScript, and modern website platforms.
+    </p>
+    <p>
+      In my previous roles, I designed and customized websites, improved mobile responsiveness, supported website
+      updates, and collaborated with clients and developers to deliver polished digital experiences. My experience with
+      Figma, Bootstrap, WordPress, Webflow, Shopify, and other design tools allows me to adapt quickly to different
+      projects and workflows.
+    </p>
+    <p>
+      I would welcome the opportunity to bring my design sense, technical skills, and attention to detail to your team.
+      Thank you for your time and consideration. I look forward to discussing how I can contribute to your organization.
+    </p>
+    <p>Sincerely,</p>
+    <p class="signature">Amit Kumar<br>Web Designer & Frontend Specialist</p>
+  </article>
+
   <script>
+    const resumeView = document.getElementById('resume-view');
+    const coverLetterView = document.getElementById('cover-letter-view');
+    const resumeViewButton = document.getElementById('resume-view-button');
+    const coverLetterViewButton = document.getElementById('cover-letter-view-button');
+
+    function showDocument(view, button) {
+      resumeView.hidden = view !== resumeView;
+      coverLetterView.hidden = view !== coverLetterView;
+      resumeViewButton.classList.toggle('active', button === resumeViewButton);
+      coverLetterViewButton.classList.toggle('active', button === coverLetterViewButton);
+    }
+
+    resumeViewButton.addEventListener('click', () => showDocument(resumeView, resumeViewButton));
+    coverLetterViewButton.addEventListener('click', () => showDocument(coverLetterView, coverLetterViewButton));
+
     document.getElementById('print-resume').addEventListener('click', () => {
       window.print();
     });
@@ -849,7 +1036,7 @@
     document.getElementById('image-resume').addEventListener('click', downloadResumeImage);
 
     function downloadResumeImage() {
-      const resume = document.querySelector('.portfolio');
+      const resume = document.querySelector('.export-target:not([hidden])');
       const button = document.getElementById('image-resume');
       const originalText = button.innerHTML;
 
