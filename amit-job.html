@@ -706,36 +706,80 @@
 
     @media (max-width: 600px) {
       body {
-        padding: 4.5rem 0.5rem 2rem;
+        padding: 7rem 0.5rem 1.5rem;
       }
 
       .export-actions {
-        top: 0.5rem;
+        top: 3.45rem;
+        left: 0.5rem;
         right: 0.5rem;
-        gap: 0.25rem;
+        justify-content: stretch;
+        gap: 0.35rem;
         padding: 0.3rem;
       }
 
       .export-actions button {
+        flex: 1;
+        justify-content: center;
+        min-width: 0;
         padding: 0.45rem 0.55rem;
         font-size: 0.7rem;
       }
 
       .document-switcher {
         top: 0.5rem;
-        right: auto;
-        bottom: auto;
-        left: 50%;
+        left: 0.5rem;
+        right: 0.5rem;
+        justify-content: stretch;
         flex-direction: row;
-        transform: translateX(-50%);
+        gap: 0.35rem;
+        padding: 0.3rem;
+        transform: none;
       }
 
       .document-switcher button {
         min-width: 0;
         flex: 1;
         justify-content: center;
-        padding: 0.5rem;
+        gap: 0.3rem;
+        padding: 0.5rem 0.35rem;
         font-size: 0.7rem;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding: 2rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero .title {
+        max-width: 100%;
+        padding: 0.4rem 1rem;
+        font-size: 1rem;
+      }
+
+      .contact-strip {
+        gap: 0.65rem;
+        padding: 0.8rem 1rem;
+        border-radius: 1rem;
+      }
+
+      .contact-strip span,
+      .contact-strip a {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .main-grid {
+        padding: 1rem 0.75rem;
+      }
+
+      .card {
+        padding: 1.1rem;
+        border-radius: 1rem;
       }
 
       .cover-letter {
@@ -785,7 +829,7 @@
         </div>
 
         <h1>Amit Kumar</h1>
-        <div class="title">Web Designer & CMS Specialist</div>
+        <div class="title">Web Designer & HubSpot CMS Specialist</div>
         <div class="contact-strip">
           <span><i class="fas fa-phone-alt"></i> +91 628-029-9226</span>
           <span><i class="fas fa-envelope"></i> amitkumarparjapat1432@gmail.com</span>
@@ -805,14 +849,13 @@
               <i class="fas fa-user-circle"></i> Profile
             </div>
             <p class="summary-text">
-              Web Designer and CMS Specialist with over two years of experience creating and maintaining
+              Web Designer and HubSpot CMS Specialist with over two years of experience creating and maintaining
               responsive websites. Experienced in HubSpot CMS, including landing pages, custom modules, email and page
               templates, and global content, with additional exposure to CRM tasks. BCA graduate with practical skills
               in HTML, CSS, JavaScript, and cross-browser implementation.
             </p>
             <div class="badge-group">
               <span class="badge">2+ years' experience</span>
-              <span class="badge">4 companies</span>
               <span class="badge">HubSpot CMS</span>
             </div>
           </div>
@@ -1014,7 +1057,7 @@
   <article id="cover-letter-view" class="document-view cover-letter export-target" hidden>
     <header class="cover-letter-header">
       <h1>Amit Kumar</h1>
-      <h2>Web Designer & CMS Specialist</h2>
+      <h2>Web Designer & HubSpot CMS Specialist</h2>
       <p>+91 628-029-9226 | amitkumarparjapat1432@gmail.com | India</p>
     </header>
 
@@ -1035,7 +1078,7 @@
       consideration. I look forward to discussing how my background could support your web projects.
     </p>
     <p>Sincerely,</p>
-    <p class="signature">Amit Kumar<br>Web Designer & CMS Specialist</p>
+    <p class="signature">Amit Kumar<br>Web Designer & HubSpot CMS Specialist</p>
   </article>
 
   <script>
