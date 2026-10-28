@@ -284,7 +284,7 @@
     .main-grid {
       display: grid;
       grid-template-columns: 1fr 1.15fr;
-      gap: 2rem;
+      gap: 1rem;
       padding: 2.2rem 2.5rem;
     }
 
@@ -305,7 +305,7 @@
       border: 1px solid #e9eef3;
       border-radius: 1.8rem;
       padding: 1.6rem 1.8rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
       transition: all 0.2s;
     }
@@ -436,11 +436,12 @@
     .skills-container {
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column;
       gap: 1.2rem;
     }
 
     .skill-category {
-      flex: 1 1 140px;
+      flex: auto;
     }
 
     .skill-category h5 {
@@ -860,37 +861,35 @@
                   <span class="skill-tag">Canva</span>
                   <span class="skill-tag">Framer</span>
                   <span class="skill-tag">Unbounce</span>
-                  <span class="skill-tag">HubSpot</span>
                   <span class="skill-tag">Git</span>
                   <span class="skill-tag">Basic SEO</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h5>HubSpot CMS</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">Website/ Landing Pages</span>
+                  <span class="skill-tag">Custom Modules</span>
+                  <span class="skill-tag">Email Templates</span>
+                  <span class="skill-tag">Page Templates</span>
+                  <span class="skill-tag">Custom Themes</span>
+                  <span class="skill-tag">Global Content</span>
+                  <span class="skill-tag">Custom Layouts</span>
+                  
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Soft Skills + Hobbies & Languages -->
+         <!-- Career Objective -->
           <div class="card">
             <div class="section-title">
-              <i class="fas fa-heart"></i> Soft Skills & Interests
+              <i class="fas fa-bullseye"></i> Career Objective
             </div>
-            <div class="soft-list">
-              <span class="soft-item"><i class="fas fa-users"></i> Teamwork</span>
-              <span class="soft-item"><i class="fas fa-comment"></i> Communication</span>
-              <span class="soft-item"><i class="fas fa-lightbulb"></i> Problem Solving</span>
-              <span class="soft-item"><i class="fas fa-clock"></i> Time Management</span>
-              <span class="soft-item"><i class="fas fa-sync-alt"></i> Adaptability</span>
-            </div>
-            <hr>
-            <div class="hobbies-lang">
-              <div class="hobby-item">
-                <i class="fas fa-book-open"></i> Reading books
-              </div>
-              <div class="hobby-item">
-                <i class="fas fa-music"></i> Playing music
-              </div>
-              <div class="lang-item">
-                <i class="fas fa-globe"></i> English · Hindi · Punjabi
-              </div>
+            <div class="objective">
+              "To obtain a Web Designer position in a reputable international organization where I can apply my
+              technical
+              skills, gain global experience, and contribute to innovative web development projects."
             </div>
           </div>
         </div>
@@ -959,23 +958,37 @@
             </div>
           </div>
 
-          <!-- Career Objective -->
+         
+  <!-- Soft Skills + Hobbies & Languages -->
           <div class="card">
             <div class="section-title">
-              <i class="fas fa-bullseye"></i> Career Objective
+              <i class="fas fa-heart"></i> Soft Skills & Interests
             </div>
-            <div class="objective">
-              "To obtain a Web Designer position in a reputable international organization where I can apply my
-              technical
-              skills, gain global experience, and contribute to innovative web development projects."
+            <div class="soft-list">
+              <span class="soft-item"><i class="fas fa-users"></i> Teamwork</span>
+              <span class="soft-item"><i class="fas fa-comment"></i> Communication</span>
+              <span class="soft-item"><i class="fas fa-lightbulb"></i> Problem Solving</span>
+              <span class="soft-item"><i class="fas fa-clock"></i> Time Management</span>
+              <span class="soft-item"><i class="fas fa-sync-alt"></i> Adaptability</span>
+            </div>
+            <hr>
+            <div class="hobbies-lang">
+              <div class="hobby-item">
+                <i class="fas fa-book-open"></i> Reading books
+              </div>
+              <div class="hobby-item">
+                <i class="fas fa-music"></i> Playing music
+              </div>
+              <div class="lang-item">
+                <i class="fas fa-globe"></i> English · Hindi · Punjabi
+              </div>
             </div>
           </div>
-
           <!-- Small portfolio note -->
-          <div
+          <!-- <div
             style="margin-top: 0.8rem; display: flex; align-items: center; gap: 0.5rem; color: #475569; font-size: 0.9rem; padding-left: 0.3rem;">
             <i class="fas fa-external-link-alt"></i> Portfolio available upon request · Open to global opportunities
-          </div>
+          </div> -->
         </div>
       </div>
 
